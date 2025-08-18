@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Light theme ayarları -->
+        <item name="android:textColorPrimary">@color/black</item> <!-- Yazı rengini siyah yap -->
+        <item name="colorPrimary">@color/purple_500</item> <!-- Toolbar için arka plan -->
+        <item name="colorOnPrimary">@color/white</item> <!-- Toolbar üzerindeki yazı -->
+    </style>
+
+    <style name="Theme.MyApplication" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/blue_700</item> <!-- Toolbar arka plan -->
+        <item name="android:textColorPrimary">@color/black</item> <!-- Varsayılan yazı rengi -->
+    </style>
+</resources>

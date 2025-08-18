@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/vehicleListFragment">
+
+    <!-- Araçlar Listesi -->
+    <fragment
+        android:id="@+id/vehicleListFragment"
+        android:name="com.fuat.aracmasraftakip.ui.VehicleListFragment"
+        android:label="Araçlar"
+        tools:layout="@layout/fragment_vehicle_list">
+        <action
+            android:id="@+id/action_vehicleListFragment_to_addVehicleFragment"
+            app:destination="@id/addVehicleFragment" />
+        <action
+            android:id="@+id/action_vehicleListFragment_to_expenseListFragment"
+            app:destination="@id/expenseListFragment" />
+    </fragment>
+
+    <!-- Yeni Araç Ekleme -->
+    <fragment
+        android:id="@+id/addVehicleFragment"
+        android:name="com.fuat.aracmasraftakip.ui.AddVehicleFragment"
+        android:label="Yeni Araç Ekle"
+        tools:layout="@layout/fragment_add_vehicle" />
+
+    <!-- Masraflar Listesi -->
+    <fragment
+        android:id="@+id/expenseListFragment"
+        android:name="com.fuat.aracmasraftakip.ui.ExpenseListFragment"
+        android:label="Masraflar"
+        tools:layout="@layout/fragment_expense_list">
+        <action
+            android:id="@+id/action_expenseListFragment_to_addExpenseFragment"
+            app:destination="@id/addExpenseFragment" />
+    </fragment>
+
+    <!-- Yeni Masraf Ekleme -->
+    <fragment
+        android:id="@+id/addExpenseFragment"
+        android:name="com.fuat.aracmasraftakip.ui.AddExpenseFragment"
+        android:label="Yeni Masraf Ekle"
+        tools:layout="@layout/fragment_add_expense" />
+
+    <!-- Ayarlar -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.fuat.aracmasraftakip.ui.SettingsFragment"
+        android:label="Ayarlar"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

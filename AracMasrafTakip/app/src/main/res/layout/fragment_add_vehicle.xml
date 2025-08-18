@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_vehicle"
+    android:padding="16dp">
+
+    <!-- Marka -->
+    <TextView
+        android:id="@+id/labelBrand"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Marka:"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.3"
+        android:layout_marginTop="16dp" />
+
+    <Spinner
+        android:id="@+id/spinnerBrand"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_edittext"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/labelBrand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.7"
+        android:layout_marginTop="12dp" />
+
+    <!-- Model -->
+    <TextView
+        android:id="@+id/labelModel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Model:"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/spinnerBrand"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.3"
+        android:layout_marginTop="16dp" />
+
+    <Spinner
+        android:id="@+id/spinnerModel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_edittext"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/spinnerBrand"
+        app:layout_constraintStart_toEndOf="@id/labelModel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.7"
+        android:layout_marginTop="12dp" />
+
+    <!-- Çıkış Yılı -->
+    <TextView
+        android:id="@+id/labelYear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Çıkış Yılı:"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/spinnerModel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.3"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/inputYear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Yıl Girin"
+        android:inputType="number"
+        android:background="@drawable/bg_edittext"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/spinnerModel"
+        app:layout_constraintStart_toEndOf="@id/labelYear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.7"
+        android:layout_marginTop="12dp" />
+
+    <!-- Plaka -->
+    <TextView
+        android:id="@+id/labelPlate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Plaka:"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/inputYear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.3"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/inputPlate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Plaka Girin"
+        android:background="@drawable/bg_edittext"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/inputYear"
+        app:layout_constraintStart_toEndOf="@id/labelPlate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.7"
+        android:layout_marginTop="12dp" />
+
+    <!-- Ekle Butonu -->
+    <ImageButton
+        android:id="@+id/addVehicleButton"
+        android:layout_width="81dp"
+        android:layout_height="60dp"
+        android:background="@null"
+        android:contentDescription="Ekle butonu"
+        android:scaleType="fitCenter"
+        android:src="@drawable/arac_ekle_yeni_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputPlate" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
