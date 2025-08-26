@@ -1,6 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F2F4F7"
+    tools:context=".ui.ExpenseListFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Üst AppBar + Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:title="Masraflar"
+            app:subtitleTextColor="@android:color/darker_gray"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
+            app:titleCentered="true"
+            app:menu="@menu/menu_expense_list" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- İçerik -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:clipToPadding="false">
+
+            <!-- Araç Bilgisi & Özet Kart -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardVehicle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardUseCompatPadding="true"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvVehicleTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="34 ABC 123 • Ford Focus"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="#000000"
+                        tools:text="34 ABC 123 • Ford Focus" />
+
+                    <TextView
+                        android:id="@+id/tvSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Bu ay: 4 kayıt • Toplam: 2.350,00 ₺"
+                        android:textSize="14sp"
+                        android:textColor="#666666"
+                        tools:text="Bu ay: 4 kayıt • Toplam: 2.350,00 ₺" />
+
+                    <!-- Filtre Chip'leri -->
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupFilters"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:singleSelection="true"
+                        app:selectionRequired="false"
+                        app:singleLine="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipAll"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tümü"
+                            app:checkedIconEnabled="false"
+                            app:chipIcon="@drawable/ic_all_24"
+                            app:chipIconVisible="true"
+                            android:checked="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipFuel"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
+                            android:text="Benzin"
+                            app:chipIcon="@drawable/local_gas_station"
+                            app:chipIconVisible="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipInsurance"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
+                            android:text="Kasko"
+                            app:chipIcon="@drawable/ic_insurance_24"
+                            app:chipIconVisible="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipService"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
+                            android:text="Bakım"
+                            app:chipIcon="@drawable/ic_service_24"
+                            app:chipIconVisible="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipTax"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
+                            android:text="Vergi"
+                            app:chipIcon="@drawable/ic_tax_24"
+                            app:chipIconVisible="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipOther"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
+                            android:text="Diğer"
+                            app:chipIcon="@drawable/ic_other_24"
+                            app:chipIconVisible="true" />
+                    </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Boş Durum -->
+            <LinearLayout
+                android:id="@+id/emptyState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:visibility="gone"
+                tools:visibility="gone">
+
+                <ImageView
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/ic_empty_box_96"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Henüz masraf yok"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Yeni masraf eklemek için aşağıdaki + butonuna dokun."
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Liste -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvExpenses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="88dp"
+                tools:listitem="@layout/item_expense" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Toplam Kartı (isteğe bağlı sabit alt özet) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvTotalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toplam"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvTotalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0,00 ₺"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#0866FF"
+                tools:text="2.350,00 ₺" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Ekle FAB -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddExpense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="20dp"
+        app:srcCompat="@drawable/ic_add_24"
+        app:backgroundTint="#45BD62"
+        app:tint="#FFFFFF"
+        android:contentDescription="Yeni Masraf" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,47 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="2dp">
 
-    <!-- Marka -->
-    <TextView
-        android:id="@+id/vehicleBrand"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Marka: Renault"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="8dp" />
+        android:minHeight="80dp"
+        android:padding="12dp">
 
-    <!-- Model -->
-    <TextView
-        android:id="@+id/vehicleModel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Model: Clio"
-        android:textSize="14sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vehicleBrand"
-        android:layout_marginBottom="8dp" />
+        <!-- Sol ikon / avatar -->
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_circle_soft"
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_directions_car_24"
+            app:tint="#0866FF"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- Plaka -->
-    <TextView
-        android:id="@+id/vehiclePlate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Plaka: 34 XYZ 34"
-        android:textSize="14sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vehicleModel" />
+        <!-- Plaka -->
+        <TextView
+            android:id="@+id/tvPlate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            tools:text="34 ABC 123"
+            app:layout_constraintStart_toEndOf="@id/ivAvatar"
+            app:layout_constraintTop_toTopOf="@id/ivAvatar"
+            android:layout_marginStart="12dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Marka - Model -->
+        <TextView
+            android:id="@+id/tvBrandModel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="#666666"
+            tools:text="Ford Focus (2018)"
+            app:layout_constraintStart_toStartOf="@id/tvPlate"
+            app:layout_constraintTop_toBottomOf="@id/tvPlate"
+             />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

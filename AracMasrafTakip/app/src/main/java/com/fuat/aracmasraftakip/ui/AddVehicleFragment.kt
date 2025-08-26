@@ -3,7 +3,6 @@ package com.fuat.aracmasraftakip.ui
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +25,6 @@ class AddVehicleFragment : Fragment() {
 
     private val vehicleViewModel: VehicleViewModel by viewModels()
 
-    // Marka ve model listesi
     private val brandModelMap = mapOf(
         "Renault" to listOf("Arkana", "Austral", "Captur", "Clio", "Duster", "Espace", "Fluence", "Grand Scenic", "Kadjar", "Kiger", "Koleos", "Kwid", "Laguna", "Master", "Megane", "Scenic", "Symbol", "Talisman", "Triber", "Zoe"),
         "Hyundai" to listOf("Accent", "Azera", "Bayon", "Creta", "Elantra", "Genesis", "Ioniq 5", "Ioniq 6", "Kona", "Nexo", "Palisade", "Santa Fe", "Sonata", "Staria", "Terracan", "Tucson", "Venue", "Verna", "i10", "i20", "i30"),
@@ -64,7 +62,6 @@ class AddVehicleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Marka Spinner'ı için adaptör
         val brandList = brandModelMap.keys.toList()
         val brandAdapter = ArrayAdapter(
             requireContext(),
@@ -74,7 +71,6 @@ class AddVehicleFragment : Fragment() {
         brandAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerBrand.adapter = brandAdapter
 
-        // Spinner prompt olarak başlık ekleme
         binding.spinnerBrand.prompt = "Markayı Seçiniz"
 
         // Model Spinner'ı için değiştirilebilir başlangıç listesi
@@ -87,17 +83,15 @@ class AddVehicleFragment : Fragment() {
         modelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerModel.adapter = modelAdapter
 
-        // Spinner prompt olarak başlık ekleme
         binding.spinnerModel.prompt = "Modeli Seçiniz"
 
-        // Marka seçildiğinde modele özel listeyi güncelle
         binding.spinnerBrand.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedBrand = parent?.getItemAtPosition(position).toString()
                 val models = brandModelMap[selectedBrand] ?: emptyList()
-                modelList.clear() // Model listesini temizle
-                modelList.addAll(models) // Yeni modelleri ekle
-                modelAdapter.notifyDataSetChanged() // Adaptörü güncelle
+                modelList.clear()
+                modelList.addAll(models)
+                modelAdapter.notifyDataSetChanged()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -105,7 +99,6 @@ class AddVehicleFragment : Fragment() {
             }
         }
 
-        // Plaka girişine TextWatcher ekle
         binding.inputPlate.addTextChangedListener(object : TextWatcher {
             private var isUpdating = false
 
@@ -121,36 +114,32 @@ class AddVehicleFragment : Fragment() {
                 val input = editable.toString().replace(" ", "").uppercase() // Boşlukları kaldır ve büyük harfe çevir
                 val formattedInput = StringBuilder()
 
-                var numbersWritten = 0 // Sol taraftaki sayıların sayısı
-                var lettersWritten = 0 // Ortadaki harflerin sayısı
-                var digitsWritten = 0 // Sağ taraftaki sayıların sayısı
-                var hasAddedDigitSpace = false // Harflerden sonra boşluk eklenip eklenmediğini kontrol et
+                var numbersWritten = 0
+                var lettersWritten = 0
+                var digitsWritten = 0
+                var hasAddedDigitSpace = false
 
                 for (char in input) {
                     when {
-                        // İlk iki karakter sayı olacak
                         numbersWritten < 2 && char.isDigit() -> {
                             formattedInput.append(char)
                             numbersWritten++
                             if (numbersWritten == 2) formattedInput.append(" ") // İlk iki sayıdan sonra boşluk
                         }
-                        // Ortadaki harfler en fazla 3 karakter olacak
                         numbersWritten == 2 && lettersWritten < 3 && char.isLetter() -> {
                             formattedInput.append(char)
                             lettersWritten++
                             hasAddedDigitSpace = false // Harflerden sonra boşluk için izin ver
                         }
-                        // Sağ taraftaki sayılar en fazla 5 karakter olacak
                         lettersWritten > 0 && digitsWritten < 5 && char.isDigit() -> {
                             if (!hasAddedDigitSpace) {
-                                formattedInput.append(" ") // Harflerden sonra sayı geliyorsa boşluk ekle
-                                hasAddedDigitSpace = true // Bir kez boşluk eklediğini işaretle
+                                formattedInput.append(" ")
+                                hasAddedDigitSpace = true
                             }
                             formattedInput.append(char)
                             digitsWritten++
                         }
                         else -> {
-                            // Hatalı giriş
                             Toast.makeText(binding.root.context, "Plakayı yanlış girdiniz!", Toast.LENGTH_SHORT).show()
                             isUpdating = false
                             return

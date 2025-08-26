@@ -41,7 +41,17 @@
         android:id="@+id/addExpenseFragment"
         android:name="com.fuat.aracmasraftakip.ui.AddExpenseFragment"
         android:label="Yeni Masraf Ekle"
-        tools:layout="@layout/fragment_add_expense" />
+        tools:layout="@layout/fragment_add_expense" >
+
+        <!-- Aşağıda bir sonraki fragmente veri atıyoruz. -->
+        <argument
+            android:name="vehicleName"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_addExpenseFragment_to_expenseListFragment"
+            app:destination="@id/expenseListFragment" />
+    </fragment>
 
     <!-- Ayarlar -->
     <fragment

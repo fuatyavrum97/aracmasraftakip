@@ -54,7 +54,6 @@ object LogWrapper {
             FileOutputStream(file, true).use { it.write(line.toByteArray()) }
 
             if (file.length() >= MAX_FILE_SIZE) {
-                // Dosya boyutu aşılırsa eskiyi silip sıfırlar
                 file.writeText("")
             }
         } catch (ex: Exception) {
