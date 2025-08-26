@@ -18,7 +18,7 @@ class VehicleAdapter(
 
         @SuppressLint("SetTextI18n")
         fun bind(vehicle: VehicleEntity) = with(binding) {
-            tvPlate.text = vehicle.plate?.takeIf { it.isNotBlank() } ?: "Plaka yok"
+            tvPlate.text = vehicle.plate?.takeIf { it.isNotBlank() } ?: "Plaka verisi yok."
 
             val yearPart = vehicle.year?.let { " ($it)" } ?: ""
             tvBrandModel.text = "${vehicle.brand} ${vehicle.model}$yearPart"

@@ -1,18 +1,24 @@
 package com.fuat.aracmasraftakip.ui
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fuat.aracmasraftakip.R
 import com.fuat.aracmasraftakip.database.viewmodel.VehicleViewModel
 import com.fuat.aracmasraftakip.databinding.FragmentVehicleListBinding
 import com.fuat.aracmasraftakip.ui.adapter.VehicleAdapter
+import com.fuat.aracmasraftakip.utils.LogWrapper
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class VehicleListFragment : Fragment() {
 
@@ -43,10 +49,19 @@ class VehicleListFragment : Fragment() {
 
         //
         binding.fabAddVehicle.setOnClickListener {
-            Toast.makeText(requireContext(), "Yeni Araç Ekleme Ekranına Yönlendiriliyorsunuz. Lütfen Bekleyiniz...",
-                Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_vehicleListFragment_to_addVehicleFragment)
+            println("asd123**")
+            LogWrapper.d("VehicleListFragment_AddVehicleButton12", "fabAddVehicle Button clicked.")
+            Toast.makeText(
+                requireContext(),
+                "Yeni Araç Ekleme Ekranına Yönlendiriliyorsunuz. Lütfen Bekleyiniz...",
+                Toast.LENGTH_SHORT
+            ).show()
+            viewLifecycleOwner.lifecycleScope.launch {
+                delay(1500) // 1.5 saniye
+                findNavController().navigate(R.id.action_vehicleListFragment_to_addVehicleFragment)
+            }
         }
+
     }
 
     override fun onDestroyView() {

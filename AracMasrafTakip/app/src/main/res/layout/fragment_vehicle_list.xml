@@ -7,7 +7,7 @@
     android:background="#F2F4F7"
     tools:context=".ui.VehicleListFragment">
 
-    <!-- App bar -->
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             app:navigationIcon="@drawable/ic_arrow_back_24"
             app:menu="@menu/menu_vehicle_list" />
 
-        <!-- Arama kutusu -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilSearch"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -45,7 +45,7 @@
                 android:imeOptions="actionSearch" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Filtreler -->
+
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroup"
             android:layout_width="match_parent"
@@ -60,22 +60,27 @@
                 android:id="@+id/chipAll"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:text="Tümü"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:checked="true" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipActive"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:text="Aktif" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipMaintenance"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:text="Bakım Yakın" />
         </com.google.android.material.chip.ChipGroup>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- İçerik -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
@@ -89,7 +94,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Boş durum -->
             <LinearLayout
                 android:id="@+id/emptyState"
                 android:layout_width="match_parent"
@@ -124,7 +128,6 @@
                     android:textColor="#666666" />
             </LinearLayout>
 
-            <!-- Liste -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/vehicleRecyclerView"
                 android:layout_width="match_parent"
@@ -135,7 +138,6 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- FAB -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddVehicle"
         android:layout_width="wrap_content"

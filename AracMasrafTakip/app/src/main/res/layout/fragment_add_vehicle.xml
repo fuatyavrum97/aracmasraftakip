@@ -14,163 +14,158 @@
         android:layout_height="wrap_content"
         android:alpha="0.98"
         app:cardBackgroundColor="#F9FFFFFF"
-    app:cardCornerRadius="18dp"
-    app:cardElevation="6dp"
-    app:strokeColor="#1A000000"
-    app:strokeWidth="1dp"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/addVehicleButton"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent">
+        app:cardCornerRadius="18dp"
+        app:cardElevation="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/addVehicleButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#1A000000"
+        app:strokeWidth="1dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <!-- Başlık -->
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Araç Bilgileri"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/tvSubtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Marka, model, yıl ve plaka bilgilerini girin."
-            android:textColor="#666666"
-            android:textSize="13sp" />
-
-        <!-- Marka -->
-        <TextView
-            android:id="@+id/labelBrand"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Marka"
-            android:textStyle="bold"
-            android:textColor="#111111"
-            android:textSize="14sp" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <!-- Not: Spinner id'sini aynı tuttum -->
-        <Spinner
-            android:id="@+id/spinnerBrand"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/bg_edittext"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:spinnerMode="dropdown"
-            android:popupBackground="#FFFFFFFF"
-            android:textColor="#000000"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Araç Bilgileri"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <!-- Model -->
-        <TextView
-            android:id="@+id/labelModel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="Model"
-            android:textStyle="bold"
-            android:textColor="#111111"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Marka, model, yıl ve plaka bilgilerini girin."
+                android:textColor="#666666"
+                android:textSize="13sp" />
 
-        <Spinner
-            android:id="@+id/spinnerModel"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/bg_edittext"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:spinnerMode="dropdown"
-            android:popupBackground="#FFFFFFFF"
-            android:textColor="#000000"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/labelBrand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Marka"
+                android:textColor="#111111"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-        <!-- Çıkış Yılı -->
-        <TextView
-            android:id="@+id/labelYear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="Çıkış Yılı"
-            android:textStyle="bold"
-            android:textColor="#111111"
-            android:textSize="14sp" />
+            <Spinner
+                android:id="@+id/spinnerBrand"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_edittext"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:popupBackground="#FFFFFFFF"
+                android:spinnerMode="dropdown"
+                android:textColor="#000000"
+                android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/inputYear"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="6dp"
-            android:hint="Örn: 2018"
-            android:inputType="number"
-            android:maxLength="4"
-            android:background="@drawable/bg_edittext"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            tools:text="2018" />
+            <TextView
+                android:id="@+id/labelModel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="Model"
+                android:textColor="#111111"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-        <!-- Plaka -->
-        <TextView
-            android:id="@+id/labelPlate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="Plaka"
-            android:textStyle="bold"
-            android:textColor="#111111"
-            android:textSize="14sp" />
+            <Spinner
+                android:id="@+id/spinnerModel"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_edittext"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:popupBackground="#FFFFFFFF"
+                android:spinnerMode="dropdown"
+                android:textColor="#000000"
+                android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/inputPlate"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="6dp"
-            android:hint="Örn: 34 ABC 123"
-            android:inputType="textCapCharacters"
-            android:maxLength="12"
-            android:background="@drawable/bg_edittext"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            tools:text="34 ABC 123" />
+            <TextView
+                android:id="@+id/labelYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="Çıkış Yılı"
+                android:textColor="#111111"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
-<com.google.android.material.button.MaterialButton
-android:id="@+id/addVehicleButton"
-android:layout_width="0dp"
-android:layout_height="56dp"
-android:layout_marginTop="16dp"
-android:layout_marginBottom="8dp"
-android:layout_marginStart="16dp"
-android:layout_marginEnd="16dp"
-android:text="Kaydet"
-android:textAllCaps="false"
-android:textSize="16sp"
-android:textColor="#FFFFFF"
-app:icon="@drawable/ic_save_24"
-app:iconTint="#FFFFFF"
-app:iconPadding="10dp"
-app:cornerRadius="16dp"
-android:background="@drawable/btn_primary"
-    app:layout_constraintTop_toBottomOf="@id/cardForm"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent" />
+            <EditText
+                android:id="@+id/inputYear"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_edittext"
+                android:hint="Örn: 2018"
+                android:inputType="number"
+                android:maxLength="4"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                tools:text="2018" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/labelPlate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="Plaka"
+                android:textColor="#111111"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/inputPlate"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_edittext"
+                android:hint="Örn: 34 ABC 123"
+                android:inputType="textCapCharacters"
+                android:maxLength="12"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                tools:text="34 ABC 123" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addVehicleButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/btn_primary"
+        android:text="Kaydet"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/ic_save_24"
+        app:iconPadding="10dp"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardForm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
